@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="UIDemo_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group width="136" height="64" alignment="center" layout="vertical" id="sUc-eo-2md">
+                            <items>
+                                <timer alignment="center" textAlignment="center" id="Ze2-pq-xQq">
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                    <calendarUnit key="units" minute="YES" second="YES"/>
+                                </timer>
+                                <button width="1" alignment="left" title="Start Timer" id="IvR-d8-tkR">
+                                    <connections>
+                                        <action selector="onTimerButton" destination="AgC-eL-Hgc" id="ckO-2C-efw"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <label alignment="center" text="Weight: 16 oz" id="zJH-ga-nge"/>
+                        <group width="1" alignment="left" spacing="10" id="WIh-lv-o90">
+                            <items>
+                                <button alignment="center" backgroundImage="minus" id="mgz-tK-4ss">
+                                    <connections>
+                                        <action selector="onMinusButton" destination="AgC-eL-Hgc" id="B9D-FQ-sJV"/>
+                                    </connections>
+                                </button>
+                                <button alignment="center" backgroundImage="plus" id="U9C-Hr-ggI">
+                                    <connections>
+                                        <action selector="onPlusButton" destination="AgC-eL-Hgc" id="sH8-Vb-jVK"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <group width="101" height="44" alignment="center" layout="vertical" spacing="6" id="2jz-QU-9Zo">
+                            <items>
+                                <label alignment="center" text="Label" textAlignment="center" id="obK-Na-eSV"/>
+                                <slider width="102" height="25" alignment="center" value="2" maximum="3" steps="3" id="Dhr-ac-kTu">
+                                    <connections>
+                                        <action selector="onTempChange:" destination="AgC-eL-Hgc" id="hON-d3-aa9"/>
+                                    </connections>
+                                </slider>
+                                <group width="1" alignment="center" id="92X-Bi-5G7">
+                                    <items>
+                                        <switch width="1" alignment="center" title="Switch" id="Djh-vS-0qb"/>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="cookLabel" destination="obK-Na-eSV" id="sub-le-l1R"/>
+                        <outlet property="timer" destination="Ze2-pq-xQq" id="qXG-ZF-bPq"/>
+                        <outlet property="timerButton" destination="IvR-d8-tkR" id="VQf-zW-Kz4"/>
+                        <outlet property="weightLabel" destination="zJH-ga-nge" id="Kkf-I0-jlU"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="337"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="763"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="UIDemo_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="UIDemo_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="minus" width="40" height="40"/>
+        <image name="plus" width="40" height="40"/>
+    </resources>
+</document>
