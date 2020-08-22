@@ -16,6 +16,7 @@ class InterfaceController: WKInterfaceController {
     var usingMetric = false
     
     
+    @IBOutlet weak var temperaturePicker: WKInterfacePicker!
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         // Configure interface objects here.
@@ -30,6 +31,25 @@ class InterfaceController: WKInterfaceController {
         weightPicker.setItems(weightItems)
         // 4
         weightPicker.setSelectedItemIndex(ounces - 1)
+        
+        var tempItems: [WKPickerItem] = []
+        for i in 1...4 {
+        // 2
+          let item = WKPickerItem()
+          item.contentImage = WKImage(imageName: "temp-\(i)")
+          tempItems.append(item)
+        }
+        // 3
+        temperaturePicker.setItems(tempItems)
+        // 4
+        onTemperatureChanged(0)
+        
+    }
+    @IBAction func onTemperatureChanged(_ value: Int) {
+        
+        let temp = MeatTemperature(rawValue: value)!
+         cookTemp = temp
+         temperatureLabel.setText(temp.stringValue)
     }
     
     @IBOutlet weak var timerButton: WKInterfaceButton!
@@ -56,6 +76,10 @@ class InterfaceController: WKInterfaceController {
               timerRunning = !timerRunning
         
     }
+    @IBAction func onWeightChanged(_ value: Int) {
+        
+        ounces = value + 1
+    }
     
     
     
@@ -73,5 +97,7 @@ class InterfaceController: WKInterfaceController {
     
     
     @IBOutlet weak var weightPicker: WKInterfacePicker!
+    
+    @IBOutlet weak var temperatureLabel: WKInterfaceLabel!
     
 }
