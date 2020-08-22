@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc" pageOrientation="vertical">
     <device id="watch38"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -11,7 +11,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="UIDemo_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="136" height="64" alignment="center" layout="vertical" id="sUc-eo-2md">
+                        <group width="129" height="61" alignment="center" layout="vertical" id="sUc-eo-2md">
                             <items>
                                 <timer alignment="center" textAlignment="center" id="Ze2-pq-xQq">
                                     <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
@@ -24,46 +24,17 @@
                                 </button>
                             </items>
                         </group>
-                        <label alignment="center" text="Weight: 16 oz" id="zJH-ga-nge"/>
-                        <group width="1" alignment="left" spacing="10" id="WIh-lv-o90">
-                            <items>
-                                <button alignment="center" backgroundImage="minus" id="mgz-tK-4ss">
-                                    <connections>
-                                        <action selector="onMinusButton" destination="AgC-eL-Hgc" id="B9D-FQ-sJV"/>
-                                    </connections>
-                                </button>
-                                <button alignment="center" backgroundImage="plus" id="U9C-Hr-ggI">
-                                    <connections>
-                                        <action selector="onPlusButton" destination="AgC-eL-Hgc" id="sH8-Vb-jVK"/>
-                                    </connections>
-                                </button>
-                            </items>
-                        </group>
-                        <group width="101" height="44" alignment="center" layout="vertical" spacing="6" id="2jz-QU-9Zo">
-                            <items>
-                                <label alignment="center" text="Label" textAlignment="center" id="obK-Na-eSV"/>
-                                <slider width="102" height="25" alignment="center" value="2" maximum="3" steps="3" id="Dhr-ac-kTu">
-                                    <connections>
-                                        <action selector="onTempChange:" destination="AgC-eL-Hgc" id="hON-d3-aa9"/>
-                                    </connections>
-                                </slider>
-                                <group width="1" alignment="center" id="92X-Bi-5G7">
-                                    <items>
-                                        <switch width="1" alignment="center" title="Switch" id="Djh-vS-0qb"/>
-                                    </items>
-                                </group>
-                            </items>
-                        </group>
+                        <label alignment="center" text="Weight (oz)" id="eZP-Mg-0kr"/>
+                        <picker height="55" alignment="left" focusStyle="stack" id="HYq-2F-JV2"/>
                     </items>
                     <connections>
-                        <outlet property="cookLabel" destination="obK-Na-eSV" id="sub-le-l1R"/>
                         <outlet property="timer" destination="Ze2-pq-xQq" id="qXG-ZF-bPq"/>
                         <outlet property="timerButton" destination="IvR-d8-tkR" id="VQf-zW-Kz4"/>
-                        <outlet property="weightLabel" destination="zJH-ga-nge" id="Kkf-I0-jlU"/>
+                        <outlet property="weightPicker" destination="HYq-2F-JV2" id="hYx-nL-0Dv"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="337"/>
+            <point key="canvasLocation" x="220" y="336.5"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -97,8 +68,4 @@
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="minus" width="40" height="40"/>
-        <image name="plus" width="40" height="40"/>
-    </resources>
 </document>

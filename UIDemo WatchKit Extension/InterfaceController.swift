@@ -14,10 +14,22 @@ class InterfaceController: WKInterfaceController {
     var ounces = 16
        var timerRunning = false
     var usingMetric = false
+    
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        updateConfiguration()
         // Configure interface objects here.
+        var weightItems: [WKPickerItem] = []
+        for i in 1...32 {
+        // 2
+          let item = WKPickerItem()
+          item.title = String(i)
+          weightItems.append(item)
+        }
+        // 3
+        weightPicker.setItems(weightItems)
+        // 4
+        weightPicker.setSelectedItemIndex(ounces - 1)
     }
     
     @IBOutlet weak var timerButton: WKInterfaceButton!
@@ -29,6 +41,7 @@ class InterfaceController: WKInterfaceController {
 //        // 2
 //        timer.setDate(date)
 //        timer.start()
+        scroll(to: timer, at: .top, animated: true)
         
         if timerRunning {
             timer.stop()
@@ -43,37 +56,6 @@ class InterfaceController: WKInterfaceController {
               timerRunning = !timerRunning
         
     }
-     
-    func updateConfiguration() {
-//      weightLabel.setText("Weight: \(ounces) oz")
-//          cookLabel.setText(cookTemp.stringValue)
-        
-         cookLabel.setText(cookTemp.stringValue)
-         var weight = ounces
-          var unit = "oz"
-          if usingMetric {
-            // 2
-            let grams = Double(ounces) * 28.3495
-            weight = Int(grams)
-            unit = "gm"
-        }
-        // 3
-          weightLabel.setText("Weight: \(weight) \(unit)")
-    }
-    
-    @IBOutlet weak var weightLabel: WKInterfaceLabel!
-    
-    @IBAction func onMinusButton() {
-         ounces -= 1
-        updateConfiguration()
-    }
-    
-    @IBAction func onPlusButton() {
-         ounces += 1
-        updateConfiguration()
-    }
-    
-    
     
     
     
@@ -86,22 +68,10 @@ class InterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
+    
     var cookTemp = MeatTemperature.medium
     
-    @IBOutlet weak var cookLabel: WKInterfaceLabel!
     
-    @IBAction func onTempChange(_ value: Float) {
-        
-        if let temp = MeatTemperature(rawValue: Int(value)) {
-          cookTemp = temp
-          updateConfiguration()
-        }
-    }
-    
-    @IBAction func onMetricChanged(_ value: Bool) {
-        
-        usingMetric = value
-         updateConfiguration()
-    }
+    @IBOutlet weak var weightPicker: WKInterfacePicker!
     
 }
